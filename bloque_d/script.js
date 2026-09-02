@@ -1,32 +1,38 @@
 /**
  * ============================================================================
- * 🎓 EVALUACIÓN DIAGNÓSTICA — BLOQUE D: JAVASCRIPT CON ERRORES
+ * 🎓 EVALUACIÓN DIAGNÓSTICA — BLOQUE D: JAVASCRIPT CORREGIDO
  * ============================================================================
  */
 
 function calcularPromedioNotas(a, b) {
-  // BUG JS: Concatenación en vez de suma numérica
-  return a + b / 2;
+  // CORREGIDO: Paréntesis para priorizar la suma antes de la división
+  return (a + b) / 2;
 }
 
 function procesarCalculo() {
   const input1 = document.querySelector("#nota1");
-  // BUG JS: Selector incorrecto
-  const input2 = document.querySelector("#nota_inexistente");
+  // CORREGIDO: Selector correcto apuntando al ID #nota2
+  const input2 = document.querySelector("#nota2");
   const cajaResultado = document.querySelector("#resultado");
 
-  // BUG JS: no convierte a número
-  const val1 = input1.value;
-  const val2 = input2.value;
+  // CORREGIDO: Conversión numérica explícita usando parseFloat()
+  const val1 = parseFloat(input1.value);
+  const val2 = parseFloat(input2.value);
+
+  // Validación preventiva ante campos vacíos
+  if (isNaN(val1) || isNaN(val2)) {
+    cajaResultado.textContent = "Por favor, ingresa notas válidas.";
+    return;
+  }
 
   const promedio = calcularPromedioNotas(val1, val2);
 
-  // BUG JS: error de sintaxis al asignar textContent
-  cajaResultado.textContnt = "Promedio: " + promedio;
+  // CORREGIDO: Propiedad textContent escrita de manera correcta
+  cajaResultado.textContent = "Promedio: " + promedio.toFixed(2);
 }
 
-// BUG JS: Selector que no encuentra el botón
-const boton = document.querySelector(".btn-calcular");
+// CORREGIDO: Selector correcto por ID del botón (#btn-calcular)
+const boton = document.querySelector("#btn-calcular");
 if (boton) {
   boton.addEventListener("click", procesarCalculo);
 }
