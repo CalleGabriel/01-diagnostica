@@ -1,32 +1,19 @@
-/**
- * ============================================================================
- * 🎓 EVALUACIÓN DIAGNÓSTICA — BLOQUE D: JAVASCRIPT CON ERRORES
- * ============================================================================
- */
+const inputNota1 = document.querySelector('#nota1');
+const inputNota2 = document.querySelector('#nota2');
+const btnCalcular = document.querySelector('#btn-calcular');
+const divResultado = document.querySelector('#resultado');
 
-function calcularPromedioNotas(a, b) {
-  // BUG JS: Concatenación en vez de suma numérica
-  return a + b / 2;
+function calcularPromedio() {
+  const n1 = parseFloat(inputNota1.value);
+  const n2 = parseFloat(inputNota2.value);
+
+  if (isNaN(n1) || isNaN(n2)) {
+    divResultado.textContent = "Por favor, ingresa ambas notas válidas.";
+    return;
+  }
+
+  const promedio = (n1 + n2) / 2;
+  divResultado.textContent = `Promedio Final: ${promedio.toFixed(2)}`;
 }
 
-function procesarCalculo() {
-  const input1 = document.querySelector("#nota1");
-  // BUG JS: Selector incorrecto
-  const input2 = document.querySelector("#nota_inexistente");
-  const cajaResultado = document.querySelector("#resultado");
-
-  // BUG JS: no convierte a número
-  const val1 = input1.value;
-  const val2 = input2.value;
-
-  const promedio = calcularPromedioNotas(val1, val2);
-
-  // BUG JS: error de sintaxis al asignar textContent
-  cajaResultado.textContnt = "Promedio: " + promedio;
-}
-
-// BUG JS: Selector que no encuentra el botón
-const boton = document.querySelector(".btn-calcular");
-if (boton) {
-  boton.addEventListener("click", procesarCalculo);
-}
+btnCalcular.addEventListener('click', calcularPromedio);

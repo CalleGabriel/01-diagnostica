@@ -2,18 +2,30 @@
  * ============================================================================
  * 🎓 EVALUACIÓN DIAGNÓSTICA — BLOQUE C: JAVASCRIPT & DOM (CE3)
  * ============================================================================
- * 
- * 📌 REQUERIMIENTOS:
- * C2. Declara variables usando exclusivamente 'let' y 'const' (NO usar 'var').
- * C3. Crea al menos una función nombrada (ej: function generarSaludo(...) { ... }).
- * C4. Selecciona un elemento del DOM con querySelector() o querySelectorAll()
- *     y modifica su contenido (.textContent o .innerHTML) o estilo.
- * C5. Agrega interactividad escuchando eventos con addEventListener()
- *     (por ejemplo al hacer click en #btn-saludar o #btn-limpiar).
  */
 
 // TODO: C2. Selecciona los elementos del DOM necesarios con const
+const inputNombre = document.getElementById('input-nombre');
+const btnSaludar = document.getElementById('btn-saludar');
+const btnLimpiar = document.getElementById('btn-limpiar');
+const mensajeResultado = document.getElementById('mensaje-resultado');
 
 // TODO: C3. Declara una función nombrada para procesar el saludo
+function generarSaludo() {
+    let nombreUsuario = inputNombre.value.trim();
+
+    if (nombreUsuario === "") {
+        mensajeResultado.textContent = "Por favor, ingresa un nombre válido.";
+    } else {
+        mensajeResultado.textContent = "¡Bienvenido/a a la UETS, " + nombreUsuario + "!";
+    }
+}
+
+function limpiarPantalla() {
+    inputNombre.value = "";
+    mensajeResultado.textContent = "Esperando interacción...";
+}
 
 // TODO: C4 y C5. Agrega los eventos addEventListener para actualizar la pantalla
+btnSaludar.addEventListener('click', generarSaludo);
+btnLimpiar.addEventListener('click', limpiarPantalla);

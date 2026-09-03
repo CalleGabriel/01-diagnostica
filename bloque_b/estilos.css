@@ -10,3 +10,27 @@
  */
 
 /* TODO: Escribe aquí tus reglas de estilos CSS */
+/* 1. Uso de display: flex en clase (.) */
+.contenedor {
+    display: flex;
+    justify-content: center;
+}
+
+/* 2. Selector de ID (#) con propiedades básicas */
+#cabecera {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+/* 3. Selector de clase (.) con propiedades básicas */
+.contenido {
+    background-color: #eee;
+    padding: 20px;
+    margin: 10px;
+}
+
+/* 4. Selector de ID (#) para cumplir con la estructura */
+#pie {
+    text-align: center;
+}
